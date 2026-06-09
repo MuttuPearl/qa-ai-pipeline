@@ -8,19 +8,19 @@ pipeline {
   stages {
     stage('Install') {
       steps {
-        sh 'npm ci'
+        bat 'npm ci'
       }
     }
 
     stage('Install Browsers') {
       steps {
-        sh 'npx playwright install --with-deps'
+        bat 'npx playwright install --with-deps'
       }
     }
 
     stage('Run Tests') {
       steps {
-        sh 'npx playwright test'
+        bat 'npx playwright test'
       }
     }
   }
@@ -31,10 +31,10 @@ pipeline {
                        allowEmptyArchive: true
     }
     success {
-      echo 'All tests PASSED! '
+      echo 'All tests PASSED! ✅'
     }
     failure {
-      echo 'Tests FAILED! '
+      echo 'Tests FAILED! ❌'
     }
   }
 }
