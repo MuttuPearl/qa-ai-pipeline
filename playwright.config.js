@@ -1,4 +1,5 @@
 // @ts-check
+// testing webhook for Jenkins pipeline ok
 import { defineConfig, devices } from '@playwright/test';
 
 /**
@@ -37,7 +38,6 @@ export default defineConfig({
     video: 'retain-on-failure',
   },
 
-  /* Configure projects for major browsers */
   projects: [
     {
       name: 'chromium',
