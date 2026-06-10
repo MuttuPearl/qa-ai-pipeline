@@ -8,19 +8,19 @@ pipeline {
   stages {
     stage('Install') {
       steps {
-        bat 'npm ci'
+        sh 'npm ci'
       }
     }
 
     stage('Install Browsers') {
       steps {
-        bat 'npx playwright install --with-deps'
+        sh 'npx playwright install --with-deps'
       }
     }
 
     stage('Run Tests') {
       steps {
-        bat 'npx playwright test'
+        sh 'npx playwright test'
       }
     }
   }
