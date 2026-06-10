@@ -1,9 +1,8 @@
 pipeline {
-  agent {
-    docker {
-      image 'mcr.microsoft.com/playwright:v1.40.0-jammy'
-      args '--ipc=host'
-    }
+  agent any
+
+  tools {
+    nodejs 'NodeJS-24'
   }
 
   stages {
@@ -13,9 +12,16 @@ pipeline {
       }
     }
 
+    stage('Install Browsers') {
+      steps {
+        sh 'npx playwright install chromium'
+        sh 'npx playwright install-deps chromium'
+      }
+    }
+
     stage('Run Tests') {
       steps {
-        sh 'npx playwright test'
+        sh 'npx playwright test --project=chromium'
       }
     }
   }
